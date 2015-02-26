@@ -13,8 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.alamkanak.weekview.WeekView;
-import com.alamkanak.weekview.WeekViewEvent;
+
+import com.commusoft.diary.diarytrials.DailyView.DailyView;
+import com.commusoft.diary.diarytrials.DailyView.DailyViewEvent;
 import com.commusoft.diary.diarytrials.calendar.TelerikActivity;
 
 import java.util.ArrayList;
@@ -24,14 +25,14 @@ import java.util.List;
      * Created by Raquib-ul-Alam Kanak on 7/21/2014.
      * Website: http://april-shower.com
      */
-    public class MainActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
-            WeekView.EventClickListener, WeekView.EventLongPressListener {
+    public class MainActivity extends ActionBarActivity implements DailyView.MonthChangeListener,
+            DailyView.EventClickListener, DailyView.EventLongPressListener {
 
         private static final int TYPE_DAY_VIEW = 1;
         private static final int TYPE_THREE_DAY_VIEW = 2;
         private static final int TYPE_WEEK_VIEW = 3;
-        private int mWeekViewType = TYPE_THREE_DAY_VIEW;
-        private WeekView mWeekView;
+        private int mDailyViewType = TYPE_THREE_DAY_VIEW;
+        private DailyView mDailyView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +40,17 @@ import java.util.List;
             setContentView(R.layout.activity_main);
 
             // Get a reference for the week view in the layout.
-            mWeekView = (WeekView) findViewById(R.id.weekView);
+            mDailyView = (DailyView) findViewById(R.id.weekView);
 
             // Show a toast message about the touched event.
-            mWeekView.setOnEventClickListener(this);
+            mDailyView.setOnEventClickListener(this);
 
             // The week view has infinite scrolling horizontally. We have to provide the events of a
             // month every time the month changes on the week view.
-            mWeekView.setMonthChangeListener(this);
+            mDailyView.setMonthChangeListener(this);
 
             // Set long press listener for events.
-            mWeekView.setEventLongPressListener(this);
+            mDailyView.setEventLongPressListener(this);
         }
 
 
@@ -64,42 +65,42 @@ import java.util.List;
             int id = item.getItemId();
             switch (id){
                 case R.id.action_today:
-                    mWeekView.goToToday();
+                    mDailyView.goToToday();
                     return true;
                 case R.id.action_day_view:
-                    if (mWeekViewType != TYPE_DAY_VIEW) {
+                    if (mDailyViewType != TYPE_DAY_VIEW) {
                         item.setChecked(!item.isChecked());
-                        mWeekViewType = TYPE_DAY_VIEW;
-                        mWeekView.setNumberOfVisibleDays(1);
+                        mDailyViewType = TYPE_DAY_VIEW;
+                        mDailyView.setNumberOfVisibleDays(1);
 
                         // Lets change some dimensions to best fit the view.
-                        mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
-                        mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-                        mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                        mDailyView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
+                        mDailyView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                        mDailyView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
                     }
                     return true;
                 case R.id.action_three_day_view:
-                    if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
+                    if (mDailyViewType != TYPE_THREE_DAY_VIEW) {
                         item.setChecked(!item.isChecked());
-                        mWeekViewType = TYPE_THREE_DAY_VIEW;
-                        mWeekView.setNumberOfVisibleDays(3);
+                        mDailyViewType = TYPE_THREE_DAY_VIEW;
+                        mDailyView.setNumberOfVisibleDays(3);
 
                         // Lets change some dimensions to best fit the view.
-                        mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
-                        mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-                        mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                        mDailyView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
+                        mDailyView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                        mDailyView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
                     }
                     return true;
                 case R.id.action_week_view:
-                    if (mWeekViewType != TYPE_WEEK_VIEW) {
+                    if (mDailyViewType != TYPE_WEEK_VIEW) {
                         item.setChecked(!item.isChecked());
-                        mWeekViewType = TYPE_WEEK_VIEW;
-                        mWeekView.setNumberOfVisibleDays(7);
+                        mDailyViewType = TYPE_WEEK_VIEW;
+                        mDailyView.setNumberOfVisibleDays(7);
 
                         // Lets change some dimensions to best fit the view.
-                        mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
-                        mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
-                        mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+                        mDailyView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
+                        mDailyView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+                        mDailyView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
                     }
                     return true;
 
@@ -115,10 +116,10 @@ import java.util.List;
         }
 
         @Override
-        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+        public List<DailyViewEvent> onMonthChange(int newYear, int newMonth) {
 
             // Populate the week view with some events.
-            List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+            List<DailyViewEvent> events = new ArrayList<DailyViewEvent>();
 
             Calendar startTime = Calendar.getInstance();
             startTime.set(Calendar.HOUR_OF_DAY, 3);
@@ -128,7 +129,7 @@ import java.util.List;
             Calendar endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR, 1);
             endTime.set(Calendar.MONTH, newMonth-1);
-            WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+            DailyViewEvent event = new DailyViewEvent(1, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_01));
             events.add(event);
 
@@ -141,7 +142,7 @@ import java.util.List;
             endTime.set(Calendar.HOUR_OF_DAY, 4);
             endTime.set(Calendar.MINUTE, 30);
             endTime.set(Calendar.MONTH, newMonth-1);
-            event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(10, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
 
@@ -153,7 +154,7 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.set(Calendar.HOUR_OF_DAY, 5);
             endTime.set(Calendar.MINUTE, 0);
-            event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(10, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_03));
             events.add(event);
 
@@ -165,7 +166,7 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 2);
             endTime.set(Calendar.MONTH, newMonth-1);
-            event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(2, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
 
@@ -178,7 +179,7 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
             endTime.set(Calendar.MONTH, newMonth - 1);
-            event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(3, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_03));
             events.add(event);
 
@@ -190,7 +191,7 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(4, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_04));
             events.add(event);
 
@@ -202,7 +203,7 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(5, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_01));
             events.add(event);
 
@@ -214,7 +215,7 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+            event = new DailyViewEvent(5, getEventTitle(startTime), startTime, endTime);
             event.setColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
 
@@ -228,12 +229,12 @@ import java.util.List;
         }
 
         @Override
-        public void onEventClick(WeekViewEvent event, RectF eventRect) {
+        public void onEventClick(DailyViewEvent event, RectF eventRect) {
             Toast.makeText(MainActivity.this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+        public void onEventLongPress(DailyViewEvent event, RectF eventRect) {
             Toast.makeText(MainActivity.this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
         }
     }

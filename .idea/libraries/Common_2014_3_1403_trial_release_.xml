@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Common-2014.3.1403-trial-release-">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/Common-2014.3.1403-trial-release/res" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/Common-2014.3.1403-trial-release/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/Common-2014.3.1403-trial-release/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

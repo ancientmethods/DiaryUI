@@ -2,67 +2,39 @@
 <items version="2" >
 
     <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\com.github.alamkanak\android-week-view\1.2.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="246fd881b6edca03120d2b653662664b6c2b35da">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-7ed036ddd7e8b87a9dae7e593290ccd3dec15488.jar" />
-    </item>
-    <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-395df352d7ad5851a13b5f7492a336bc1bdd8830.jar" />
-    </item>
-    <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\DiaryTrials\DiaryUI\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-8f04f48fbcdfb751532b4cef288144dbebb519a8.jar" />
+        <dex dex="C:\DiaryTrials\DiaryUI\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-eb6bea18e2f8385bd245445b893379a767e64a86.jar" />
     </item>
     <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\Primitives-2014.3.1403-trial-release\classes.jar"
+        jar="C:\DiaryTrials\DiaryUI\app\build\intermediates\exploded-aar\Common-2014.3.1403-trial-release\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="f13ad13536d0b4ecccb64883608a48572d6be640">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-cd1889b365fef4da9aa25de62b051d92082bfe27.jar" />
-    </item>
-    <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\Feedback-2014.3.1403-trial-release\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6f5301f4400eadd844b95c17f20264e0b46470c3">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-a70a6f287c2f7485f2447970f8d3a4b17f1165f6.jar" />
+        sha1="ad1d8abfb9d9c68d7b1d78f6b58088dad27347bf">
+        <dex dex="C:\DiaryTrials\DiaryUI\app\build\intermediates\pre-dexed\debug\classes-bf8a57ba86a656733f6ddf79af4ee2b27472d59a.jar" />
     </item>
     <item
         jar="C:\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-9e355269ebee241e3e90225f6be873fa271a2207.jar" />
+        <dex dex="C:\DiaryTrials\DiaryUI\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-9e355269ebee241e3e90225f6be873fa271a2207.jar" />
     </item>
     <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\Input-2014.3.1403-trial-release\classes.jar"
+        jar="C:\DiaryTrials\DiaryUI\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="f6e96df51ba4e2b1c07dbdd8f9348553a0946603">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-787320c8db009ad826c9c2e90e67a6aefa41363e.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\DiaryTrials\DiaryUI\app\build\intermediates\pre-dexed\debug\classes-2cad43367d5d25da2b292567c2777d899356ae6d.jar" />
     </item>
     <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\Common-2014.3.1403-trial-release\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ad1d8abfb9d9c68d7b1d78f6b58088dad27347bf">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-dac29582b4994d4a6af7340ff67c52cdd57ec33f.jar" />
-    </item>
-    <item
-        jar="C:\DiaryTrials\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="C:\DiaryTrials\DiaryUI\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\DiaryTrials\app\build\intermediates\pre-dexed\debug\classes-dc6d4b5656380c49032a93c808a0911816b3fa7f.jar" />
+        <dex dex="C:\DiaryTrials\DiaryUI\app\build\intermediates\pre-dexed\debug\classes-7b56036c51380afa513fc450bc3bccf52311a7f3.jar" />
     </item>
 
 </items>

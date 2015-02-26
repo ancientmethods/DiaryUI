@@ -41,3 +41,12 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.gradle/2.2.1/taskArtifacts/cache.properties.lock
+.gradle/2.2.1/taskArtifacts/cache.properties.lock
+*.bin
+.idea/libraries/appcompat_v7_21_0_3.xml
+.idea/libraries/support_v4_21_0_3.xml
+.idea
+.gradle
+build
+.gradle/2.2.1/taskArtifacts/cache.properties.lock

@@ -23,7 +23,6 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.alamkanak.weekview.WeekViewEvent;
 import com.commusoft.diary.diarytrials.R;
 import com.commusoft.diary.diarytrials.TelerikSource.CalendarCell;
 import com.commusoft.diary.diarytrials.TelerikSource.CalendarCellType;
