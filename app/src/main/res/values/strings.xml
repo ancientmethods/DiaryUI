@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Week View</string>
+    <string name="action_today">Go to today</string>
+    <string name="action_day_view">Day view</string>
+    <string name="action_three_day_view">3 day view</string>
+    <string name="action_week_view">Week view</string>
+	
+	
+	
+	
+	
+	
+	
+
+    <string-array name="indicators_range_options">
+        <item>1 month</item>
+        <item>6 months</item>
+        <item>1 year</item>
+        <item>5 years</item>
+    </string-array>
+    <string-array name="indicators_range_button_text">
+        <item>Range: <b>1 M</b></item>
+        <item>Range: <b>6 M</b></item>
+        <item>Range: <b>1 Y</b></item>
+        <item>Range: <b>5 Y</b></item>
+    </string-array>
+</resources>
