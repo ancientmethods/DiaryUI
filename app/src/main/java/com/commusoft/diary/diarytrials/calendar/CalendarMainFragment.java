@@ -24,17 +24,16 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.commusoft.diary.diarytrials.R;
-import com.commusoft.diary.diarytrials.TelerikSource.CalendarCell;
-import com.commusoft.diary.diarytrials.TelerikSource.CalendarCellType;
-import com.commusoft.diary.diarytrials.TelerikSource.CalendarDayCell;
-import com.commusoft.diary.diarytrials.TelerikSource.CalendarDisplayMode;
-import com.commusoft.diary.diarytrials.TelerikSource.CalendarSelectionMode;
-import com.commusoft.diary.diarytrials.TelerikSource.RadCalendarView;
-import com.commusoft.diary.diarytrials.TelerikSource.ScrollMode;
-import com.commusoft.diary.diarytrials.TelerikSource.WeekNumbersDisplayMode;
-import com.commusoft.diary.diarytrials.TelerikSource.events.Event;
-import com.commusoft.diary.diarytrials.TelerikSource.events.EventRenderMode;
-import com.commusoft.diary.diarytrials.calendar.Model.DiaryJob;
+import com.commusoft.diary.diarytrials.DiarySource.CalendarCell;
+import com.commusoft.diary.diarytrials.DiarySource.CalendarCellType;
+import com.commusoft.diary.diarytrials.DiarySource.CalendarDayCell;
+import com.commusoft.diary.diarytrials.DiarySource.CalendarDisplayMode;
+import com.commusoft.diary.diarytrials.DiarySource.CalendarSelectionMode;
+import com.commusoft.diary.diarytrials.DiarySource.RadCalendarView;
+import com.commusoft.diary.diarytrials.DiarySource.ScrollMode;
+import com.commusoft.diary.diarytrials.DiarySource.WeekNumbersDisplayMode;
+import com.commusoft.diary.diarytrials.DiarySource.events.Event;
+import com.commusoft.diary.diarytrials.DiarySource.events.EventRenderMode;
 import com.telerik.android.common.Function;
 import com.telerik.android.common.Procedure;
 import com.telerik.android.common.Util;
@@ -468,7 +467,7 @@ public class CalendarMainFragment extends Fragment {
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event event, Event event2) {
-                return (event.getStartDate() < event2.getStartDate()) ? -1 : (event.getStartDate() > event2.getStartDate()) ? 1 : 0;
+                return (event.getStartTime() < event2.getStartTime()) ? -1 : (event.getStartTime() > event2.getStartTime()) ? 1 : 0;
             }
         });
 
@@ -630,11 +629,11 @@ public class CalendarMainFragment extends Fragment {
                 TextView txtStartDate = (TextView) rootView.findViewById(R.id.txtStart);
                 TextView txtEndDate = (TextView) rootView.findViewById(R.id.txtEnd);
 
-                value.setTimeInMillis(e.getStartDate());
+                value.setTimeInMillis(e.getStartTime());
                 formattedValue = dateFormat.format(value.getTime());
                 txtStartDate.setText(formattedValue);
 
-                value.setTimeInMillis(e.getEndDate());
+                value.setTimeInMillis(e.getEndTime());
                 formattedValue = dateFormat.format(value.getTime());
                 txtEndDate.setText(formattedValue);
             }

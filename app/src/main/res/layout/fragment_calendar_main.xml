@@ -50,7 +50,7 @@
             android:background="@color/listItemBottomBorder" />
     </FrameLayout>
 
-    <com.commusoft.diary.diarytrials.TelerikSource.RadCalendarView
+    <com.commusoft.diary.diarytrials.DiarySource.RadCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

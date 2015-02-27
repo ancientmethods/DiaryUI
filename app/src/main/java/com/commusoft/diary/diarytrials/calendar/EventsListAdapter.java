@@ -7,8 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.commusoft.diary.diarytrials.R;
 
-import com.commusoft.diary.diarytrials.TelerikSource.RadCalendarView;
-import com.commusoft.diary.diarytrials.TelerikSource.events.Event;
+import com.commusoft.diary.diarytrials.DiarySource.RadCalendarView;
+import com.commusoft.diary.diarytrials.DiarySource.events.Event;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,11 +51,11 @@ public class EventsListAdapter extends ArrayAdapter<Event> {
             TextView txtStartDate = (TextView) rootView.findViewById(R.id.txtStart);
             TextView txtEndDate = (TextView) rootView.findViewById(R.id.txtEnd);
 
-            value.setTimeInMillis(e.getStartDate());
+            value.setTimeInMillis(e.getStartTime());
             formattedValue = dateFormat.format(value.getTime());
             txtStartDate.setText(formattedValue);
 
-            value.setTimeInMillis(e.getEndDate());
+            value.setTimeInMillis(e.getEndTime());
             formattedValue = dateFormat.format(value.getTime());
             txtEndDate.setText(formattedValue);
         }

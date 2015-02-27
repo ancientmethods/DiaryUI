@@ -1,21 +1,19 @@
 package com.commusoft.diary.diarytrials;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.app.Activity;
 import android.graphics.RectF;
-import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 
-import com.commusoft.diary.diarytrials.DailyView.DailyView;
-import com.commusoft.diary.diarytrials.DailyView.DailyViewEvent;
+import com.commusoft.diary.diarytrials.DiarySource.DailyView;
+import com.commusoft.diary.diarytrials.DiarySource.events.DiaryJob;
+import com.commusoft.diary.diarytrials.DiarySource.events.Event;
 import com.commusoft.diary.diarytrials.calendar.TelerikActivity;
 
 import java.util.ArrayList;
@@ -34,6 +32,12 @@ import java.util.List;
         private int mDailyViewType = TYPE_THREE_DAY_VIEW;
         private DailyView mDailyView;
 
+        private final String[] personalMeetingTitles = new String[]{
+                "Watch a movie",
+                "Date with Candice",
+                "Birthday party"
+
+        };
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -114,13 +118,26 @@ import java.util.List;
 
             return super.onOptionsItemSelected(item);
         }
+        private Calendar getToday() {
+            Calendar calendar = Calendar.getInstance();
+            moveToDayStart(calendar);
+            return calendar;
+        }
+        private void moveToDayStart(Calendar calendar) {
+            calendar.set(Calendar.AM_PM, Calendar.AM);
+            calendar.set(Calendar.HOUR, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+        }
 
         @Override
-        public List<DailyViewEvent> onMonthChange(int newYear, int newMonth) {
+        public List<DiaryJob> onMonthChange(int newYear, int newMonth) {
 
-            // Populate the week view with some events.
-            List<DailyViewEvent> events = new ArrayList<DailyViewEvent>();
-
+            // Populate the daily view with some events.
+            ArrayList<DiaryJob> events = new ArrayList<DiaryJob>();
+            Calendar eventDate = getToday();
+/*
             Calendar startTime = Calendar.getInstance();
             startTime.set(Calendar.HOUR_OF_DAY, 3);
             startTime.set(Calendar.MINUTE, 0);
@@ -129,9 +146,50 @@ import java.util.List;
             Calendar endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR, 1);
             endTime.set(Calendar.MONTH, newMonth-1);
-            DailyViewEvent event = new DailyViewEvent(1, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_01));
+*/
+             int personalMeetingColor = Color.parseColor("#C23EB8");
+
+
+                for (int i = 0; i < personalMeetingTitles.length; i++) {
+
+                   // eventDate.set(Calendar.AM_PM, Calendar.PM);
+                    eventDate.set(Calendar.HOUR, 13);
+                    eventDate.set(Calendar.MINUTE, 30);
+                    eventDate.set(Calendar.MONTH, newMonth -1);
+                    eventDate.set(Calendar.YEAR, newYear);
+                    long start = eventDate.getTimeInMillis();
+
+                    eventDate.set(Calendar.MINUTE, 30);
+                    eventDate.set(Calendar.HOUR, 14);
+                    eventDate.set(Calendar.MONTH, newMonth -1);
+                    eventDate.set(Calendar.YEAR, newYear);
+                    long end = eventDate.getTimeInMillis();
+                    DiaryJob event = new DiaryJob(personalMeetingTitles[i], start, end,i);
+                    event.setEventColor(personalMeetingColor);
+                    events.add(event);
+
+                    eventDate = getToday();
+                }
+
+
+      /*      startTime = Calendar.getInstance();
+            startTime.set(Calendar.HOUR_OF_DAY, 3);
+            startTime.set(Calendar.MINUTE, 30);
+            startTime.set(Calendar.MONTH, newMonth-1);
+            startTime.set(Calendar.YEAR, newYear);
+            endTime = (Calendar) startTime.clone();
+            endTime.set(Calendar.HOUR_OF_DAY, 4);
+            endTime.set(Calendar.MINUTE, 30);
+            endTime.set(Calendar.MONTH, newMonth-1);
+            event = new DiaryJob(getEventTitle(startTime) , startTime.getTimeInMillis(), endTime.getTimeInMillis(),10);
+            event.setEventColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
+*/
+          /*  DiaryJob event = new DiaryJob( getEventTitle(startTime),startTime.getTimeInMillis(), endTime.getTimeInMillis(),1);
+            event.setEventColor(getResources().getColor(R.color.event_color_01));
+            events.add(event);
+
+
 
             startTime = Calendar.getInstance();
             startTime.set(Calendar.HOUR_OF_DAY, 3);
@@ -142,8 +200,8 @@ import java.util.List;
             endTime.set(Calendar.HOUR_OF_DAY, 4);
             endTime.set(Calendar.MINUTE, 30);
             endTime.set(Calendar.MONTH, newMonth-1);
-            event = new DailyViewEvent(10, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_02));
+            event = new DiaryJob(getEventTitle(startTime) , startTime.getTimeInMillis(), endTime.getTimeInMillis(),10);
+            event.setEventColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -154,8 +212,8 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.set(Calendar.HOUR_OF_DAY, 5);
             endTime.set(Calendar.MINUTE, 0);
-            event = new DailyViewEvent(10, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_03));
+            event = new DiaryJob( getEventTitle(startTime), startTime.getTimeInMillis(), endTime.getTimeInMillis(),10);
+            event.setEventColor(getResources().getColor(R.color.event_color_03));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -166,8 +224,8 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 2);
             endTime.set(Calendar.MONTH, newMonth-1);
-            event = new DailyViewEvent(2, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_02));
+            event = new DiaryJob(getEventTitle(startTime), startTime.getTimeInMillis(), endTime.getTimeInMillis(),2);
+            event.setEventColor(getResources().getColor(R.color.event_color_02));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -179,8 +237,8 @@ import java.util.List;
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
             endTime.set(Calendar.MONTH, newMonth - 1);
-            event = new DailyViewEvent(3, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_03));
+            event = new DiaryJob(getEventTitle(startTime),startTime.getTimeInMillis(), endTime.getTimeInMillis(),3);
+            event.setEventColor(getResources().getColor(R.color.event_color_03));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -191,8 +249,8 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new DailyViewEvent(4, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_04));
+            event = new DiaryJob( getEventTitle(startTime), startTime.getTimeInMillis(), endTime.getTimeInMillis(),4);
+            event.setEventColor(getResources().getColor(R.color.event_color_04));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -203,8 +261,8 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new DailyViewEvent(5, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_01));
+            event = new DiaryJob(getEventTitle(startTime), startTime.getTimeInMillis(), endTime.getTimeInMillis(),5);
+            event.setEventColor(getResources().getColor(R.color.event_color_01));
             events.add(event);
 
             startTime = Calendar.getInstance();
@@ -215,9 +273,9 @@ import java.util.List;
             startTime.set(Calendar.YEAR, newYear);
             endTime = (Calendar) startTime.clone();
             endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new DailyViewEvent(5, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.event_color_02));
-            events.add(event);
+            event = new DiaryJob(getEventTitle(startTime), startTime.getTimeInMillis(), endTime.getTimeInMillis(),5);
+            event.setEventColor(getResources().getColor(R.color.event_color_02));
+            events.add(event);*/
 
             return events;
         }
@@ -229,12 +287,12 @@ import java.util.List;
         }
 
         @Override
-        public void onEventClick(DailyViewEvent event, RectF eventRect) {
-            Toast.makeText(MainActivity.this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        public void onEventClick(DiaryJob event, RectF eventRect) {
+            Toast.makeText(MainActivity.this, "Clicked " + event.getTitle(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onEventLongPress(DailyViewEvent event, RectF eventRect) {
-            Toast.makeText(MainActivity.this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+        public void onEventLongPress(DiaryJob event, RectF eventRect) {
+            Toast.makeText(MainActivity.this, "Long pressed event: " + event.getTitle(), Toast.LENGTH_SHORT).show();
         }
     }
